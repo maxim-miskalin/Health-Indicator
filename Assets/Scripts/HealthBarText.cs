@@ -14,16 +14,12 @@ public class HealthBarText : HealthBar
 
     protected override void ChangeValue(float current, float max)
     {
-        _ratio = current / max;
-
-        if (current != max)
-        {
-            if (_ratio > _criticalValueFraction && _text.color != _colorIndicator)
-                _text.color = _colorIndicator;
-            else if (_ratio <= _criticalValueFraction && _text.color != _colorIndicatorCriticalValue)
-                _text.color = _colorIndicatorCriticalValue;
-        }
-
+        base.SetColorIndicator(current, max);
         _text.text = Math.Round(current) + "/" + Math.Round(max);
+    }
+
+    protected override void ChangeColor(Color color)
+    {
+        _text.color = color;
     }
 }

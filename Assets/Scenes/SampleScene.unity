@@ -1373,13 +1373,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd469416bc4e878499ef4d1ae80542bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: {fileID: 463545361}
-  _colorIndicator: {r: 1, g: 1, b: 1, a: 1}
-  _criticalValueFraction: 0.25
-  _colorIndicatorCriticalValue: {r: 1, g: 0, b: 0, a: 1}
-  _backgroundName: Background
-  _fillName: Fill Area/Fill
-  _speedSmoothness: 0.5
+  Health: {fileID: 463545361}
+  ColorIndicator: {r: 1, g: 1, b: 1, a: 1}
+  CriticalValueFraction: 0.25
+  ColorIndicatorCriticalValue: {r: 1, g: 0, b: 0, a: 1}
+  Background: {fileID: 235251747}
+  Fill: {fileID: 160526107}
+  _speedSmoothness: 2
+  _delay: 0.01
 --- !u!1 &1396235348
 GameObject:
   m_ObjectHideFlags: 0
@@ -1656,10 +1657,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66706b92539c1d946bab05cf3b245b83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: {fileID: 463545361}
-  _colorIndicator: {r: 1, g: 1, b: 1, a: 1}
-  _criticalValueFraction: 0.25
-  _colorIndicatorCriticalValue: {r: 1, g: 0, b: 0, a: 1}
+  Health: {fileID: 463545361}
+  ColorIndicator: {r: 1, g: 1, b: 1, a: 1}
+  CriticalValueFraction: 0.25
+  ColorIndicatorCriticalValue: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &1898416696
 GameObject:
   m_ObjectHideFlags: 0
@@ -2157,12 +2158,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ac6eaf4eb64b5b448442595fed91de0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: {fileID: 463545361}
-  _colorIndicator: {r: 1, g: 1, b: 1, a: 1}
-  _criticalValueFraction: 0.25
-  _colorIndicatorCriticalValue: {r: 1, g: 0, b: 0, a: 1}
-  _backgroundName: Background
-  _fillName: Fill Area/Fill
+  Health: {fileID: 463545361}
+  ColorIndicator: {r: 1, g: 1, b: 1, a: 1}
+  CriticalValueFraction: 0.25
+  ColorIndicatorCriticalValue: {r: 1, g: 0, b: 0, a: 1}
+  Background: {fileID: 1091789644}
+  Fill: {fileID: 428340794}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

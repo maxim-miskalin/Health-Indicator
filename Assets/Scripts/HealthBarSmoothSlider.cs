@@ -1,35 +1,36 @@
+using System.Collections;
 using UnityEngine;
 
 public class HealthBarSmoothSlider : HealthBarSlider
 {
     [Header("Smooth change")]
-    [SerializeField] private float _speedSmoothness = 0.5f;
+    [SerializeField] private float _speedSmoothness = 2f;
+    [SerializeField] private float _delay = 0.01f;
 
-    private bool _isSmooth = false;
+    private WaitForSeconds _wait;
+    private Coroutine _coroutine;
 
-    private void Update()
+    private void Start()
     {
-        if (_isSmooth)
-        {
-            _slider.value = Mathf.MoveTowards(_slider.value, _ratio, _speedSmoothness * Time.deltaTime);
-
-            if (_slider.value == _ratio)
-                _isSmooth = false;
-        }
+        _wait = new(_delay);
     }
 
     protected override void ChangeValue(float current, float max)
     {
-        _ratio = current / max;
+        if (_coroutine != null)
+            StopCoroutine(_coroutine);
 
-        if (current != max)
+        base.SetColorIndicator(current, max);
+        _coroutine = StartCoroutine(MoveSmoothSlider());
+    }
+
+    private IEnumerator MoveSmoothSlider()
+    {
+        while (Slider.value != Ratio)
         {
-            if (_ratio > _criticalValueFraction && _background.color != _colorIndicator)
-                ChangeColor(_colorIndicator);
-            else if (_ratio <= _criticalValueFraction && _background.color != _colorIndicatorCriticalValue)
-                ChangeColor(_colorIndicatorCriticalValue);
-        }
+            Slider.value = Mathf.MoveTowards(Slider.value, Ratio, _speedSmoothness * Time.deltaTime);
 
-        _isSmooth = true;
+            yield return _wait;
+        }
     }
 }

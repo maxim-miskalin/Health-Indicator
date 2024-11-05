@@ -6,7 +6,7 @@ public class Health : MonoBehaviour
     [SerializeField, Min(0f)] private float _maxValue;
     [SerializeField] private float _currentValue;
 
-    public event Action<float, float> OnValueChanged;
+    public event Action<float, float> ValueChanged;
 
     public float MaxValue => _maxValue;
     public float CurrentValue => _currentValue;
@@ -18,7 +18,7 @@ public class Health : MonoBehaviour
 
     private void Start()
     {
-        OnValueChanged?.Invoke(_currentValue, _maxValue);
+        ValueChanged?.Invoke(_currentValue, _maxValue);
     }
 
     public void TakeDamage(float damage)
@@ -28,7 +28,7 @@ public class Health : MonoBehaviour
         else
             _currentValue = 0;
 
-        OnValueChanged?.Invoke(_currentValue, _maxValue);
+        ValueChanged?.Invoke(_currentValue, _maxValue);
     }
 
     public void TakeDamage(int damage)
@@ -43,7 +43,7 @@ public class Health : MonoBehaviour
         if (_currentValue > _maxValue)
             _currentValue = _maxValue;
 
-        OnValueChanged?.Invoke(_currentValue, _maxValue);
+        ValueChanged?.Invoke(_currentValue, _maxValue);
     }
 
     public void Restore(int value)
