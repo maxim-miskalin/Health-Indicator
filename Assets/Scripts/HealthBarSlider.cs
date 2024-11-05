@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Slider))]
-public class HealthBarSlider : HealthBar
+public class HealthBarSlider : HealthView
 {
     [SerializeField] protected Image Background;
     [SerializeField] protected Image Fill;
@@ -14,9 +14,10 @@ public class HealthBarSlider : HealthBar
         Slider = GetComponent<Slider>();
     }
 
-    protected override void ChangeValue(float current, float max)
+    protected override void OnChangeValue(float current, float max)
     {
-        base.SetColorIndicator(current, max);
+        Ratio = current / max;
+        SetColorIndicator(current, max);
         Slider.value = Ratio;
     }
 

@@ -4,7 +4,7 @@ public class Restore : MonoBehaviour
 {
     [SerializeField] private Health _health;
     [SerializeField] private float _minRandomValue = 10f;
-    [SerializeField] private float _maxRandomValue = 50f;
+    [SerializeField] private float _maxRandomValue = 100f;
 
     public void AddHealth()
     {

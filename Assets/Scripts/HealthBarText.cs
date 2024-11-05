@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(TextMeshProUGUI))]
-public class HealthBarText : HealthBar
+public class HealthBarText : HealthView
 {
     private TextMeshProUGUI _text;
 
@@ -12,9 +12,10 @@ public class HealthBarText : HealthBar
         _text = GetComponent<TextMeshProUGUI>();
     }
 
-    protected override void ChangeValue(float current, float max)
+    protected override void OnChangeValue(float current, float max)
     {
-        base.SetColorIndicator(current, max);
+        Ratio = current / max;
+        SetColorIndicator(current, max);
         _text.text = Math.Round(current) + "/" + Math.Round(max);
     }
 

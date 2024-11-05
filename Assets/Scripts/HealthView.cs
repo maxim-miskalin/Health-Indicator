@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public abstract class HealthBar : MonoBehaviour
+public abstract class HealthView : MonoBehaviour
 {
     [SerializeField] protected Health Health;
     [Header("Color of bar value")]
@@ -13,28 +13,23 @@ public abstract class HealthBar : MonoBehaviour
 
     private void OnEnable()
     {
-        Health.ValueChanged += ChangeValue;
+        Health.ValueChanged += OnChangeValue;
     }
 
     private void OnDisable()
     {
-        Health.ValueChanged -= ChangeValue;
+        Health.ValueChanged -= OnChangeValue;
     }
 
     protected virtual void SetColorIndicator(float current, float max)
     {
-        Ratio = current / max;
-
-        if (current != max)
-        {
-            if (Ratio > CriticalValueFraction)
-                ChangeColor(ColorIndicator);
-            else if (Ratio <= CriticalValueFraction)
-                ChangeColor(ColorIndicatorCriticalValue);
-        }
+        if (Ratio > CriticalValueFraction)
+            ChangeColor(ColorIndicator);
+        else if (Ratio <= CriticalValueFraction)
+            ChangeColor(ColorIndicatorCriticalValue);
     }
 
-    protected abstract void ChangeValue(float current, float max);
+    protected abstract void OnChangeValue(float current, float max);
 
     protected abstract void ChangeColor(Color color);
 }
